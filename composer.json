@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "tovitch/laravel-svg",
+    "description": "",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "tovitch",
+        "laravel-svg"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/tovitch/laravel-svg",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "tovitch",
+            "email": "tovitch@icloud.com",
             "homepage": "https://tovitch.dev",
             "role": "Developer"
         }
@@ -24,17 +24,17 @@
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.3",
         "psalm/plugin-laravel": "^1.2",
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^4.0"
     },
     "autoload": {
         "psr-4": {
-            "Tovitch\\Skeleton\\": "src",
-            "Tovitch\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Tovitch\\Svg\\": "src",
+            "Tovitch\\Svg\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tovitch\\Skeleton\\Tests\\": "tests"
+            "Tovitch\\Svg\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tovitch\\Skeleton\\SkeletonServiceProvider"
+                "Tovitch\\Svg\\SvgServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Tovitch\\Skeleton\\SkeletonFacade"
+                "Svg": "Tovitch\\Svg\\SvgFacade"
             }
         }
     },

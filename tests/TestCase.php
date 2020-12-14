@@ -1,9 +1,9 @@
 <?php
 
-namespace Tovitch\Skeleton\Tests;
+namespace Tovitch\Svg\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Tovitch\Skeleton\SkeletonServiceProvider;
+use Tovitch\Svg\SvgServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TestCase extends Orchestra
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Tovitch\\Skeleton\\Database\\Factories\\' . class_basename(
+            fn(string $modelName) => 'Tovitch\\Svg\\Database\\Factories\\' . class_basename(
                     $modelName
                 ) . 'Factory'
         );
@@ -32,7 +32,7 @@ class TestCase extends Orchestra
         );
 
         /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_laravel_svg_table.php.stub';
         (new \CreatePackageTable())->up();
         */
     }
@@ -40,7 +40,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            SvgServiceProvider::class,
         ];
     }
 }
