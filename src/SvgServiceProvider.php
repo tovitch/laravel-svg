@@ -9,8 +9,6 @@ class SvgServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Blade::component(Svg::class, 'svg', config('laravel-svg.prefix'));
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/laravel-svg.php' => config_path('laravel-svg.php'),
@@ -22,10 +20,27 @@ class SvgServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-svg');
+
+        $this->loadViewComponentsAs(config('laravel-svg.prefix'), [
+            'svg' => $this->resolveLibraryClass(),
+        ]);
     }
 
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-svg.php', 'laravel-svg');
+    }
+
+    protected function resolveLibraryClass()
+    {
+        $library = config('laravel-svg.default');
+
+        if (is_null(config("laravel-svg.libraries.{$library}"))) {
+            throw new \Exception("Library [{$library}] does not exist.");
+        }
+
+        $library = ucfirst($library);
+
+        return "Tovitch\\Svg\\Libraries\\{$library}\\{$library}Svg";
     }
 }
