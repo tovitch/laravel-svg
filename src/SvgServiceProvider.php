@@ -2,7 +2,6 @@
 
 namespace Tovitch\Svg;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class SvgServiceProvider extends ServiceProvider
@@ -22,7 +21,7 @@ class SvgServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-svg');
 
         $this->loadViewComponentsAs(config('laravel-svg.prefix'), [
-            'svg' => $this->resolveLibraryClass(),
+            'svg' => static::resolveLibraryClass(),
         ]);
     }
 
@@ -31,7 +30,7 @@ class SvgServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel-svg.php', 'laravel-svg');
     }
 
-    protected function resolveLibraryClass()
+    public static function resolveLibraryClass()
     {
         $library = config('laravel-svg.default');
 
